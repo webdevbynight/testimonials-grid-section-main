@@ -1,0 +1,32 @@
+@charset "utf-8";
+
+// Variables
+:root {
+    // Colours
+    --primary-background: #ecf2f8;
+    --testimonial-primary: #48556a;
+    --testimonial-secondary: white;
+    --testimonial-primary-background: white;
+
+    // Fonts
+    --font: "Barlow Semi Condensed", sans-serif;
+    --testimonial-name-size: 1.3rem;
+    --testimonial-status-size: 1.1rem;
+    --testimonial-summary-size: 2rem;
+    --testimonial-text-size: 1.3rem;
+    --testimonial-text-line-height: calc(18 / 13);
+
+    // Box sizes, margins, paddings, borders, gutters and radius
+    --overall-spacing: 2.4rem;
+    --testimonials-size-inline: calc(111 / 144 * 100dvi);
+    --testimonials-row-gutter: 2.4rem;
+    --testimonials-col-gutter: 3rem;
+    --testimonial-padding: 2.6rem 3.2rem 3.2rem;
+    --testimonial-radius: .8rem;
+    --testimonial-avatar-border: 2px;
+    --testimonial-text-margin: 1.6rem;
+
+    // Miscellaneous
+    --testimonial-background-image-side: top right 24px;
+    --testimonial-background-image-side-multicolumn: top right 80px;
+}

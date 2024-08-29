@@ -1,0 +1,131 @@
+@charset "utf-8";
+@use "../base/mixins" as *;
+
+/** @section Testimonials */
+.testimonials {
+    article {
+        color: var(--testimonial-primary);
+        background: var(--testimonial-primary-background);
+        padding: var(--testimonial-padding);
+        border-radius: var(--testimonial-radius);
+        box-shadow: rgb(72 85 106 / .2474) 4rem 6rem 5rem -4.7rem;
+        header {
+            p {
+                font-size: var(--testimonial-summary-size);
+                line-height: normal;
+                font-weight: 600;
+            }
+        }
+        blockquote {
+            font-size: var(--testimonial-text-size);
+            line-height: var(--testimonial-text-line-height);
+            margin-block-start: var(--testimonial-text-margin);
+            opacity: 0.7;
+            > :first-child {
+                &::before {
+                    content: "“";
+                }
+            }
+            > :last-child {
+                &::after {
+                    content: "”";
+                }
+            }
+        }
+        img {
+            grid-area: avatar;
+            border-radius: 50%;
+        }
+        .title {
+            font-size: var(--testimonial-name-size);
+            line-height: 1;
+            font-weight: inherit;
+            display: grid;
+            grid-template: repeat(2, auto) / auto 1fr;
+            grid-template-areas: "avatar ." "avatar .";
+            gap: .4rem 1.9rem;
+            margin-block-end: 1.8rem;
+        }
+        .status {
+            font-size: var(--testimonial-status-size);
+            opacity: 0.5;
+        }
+        &:not(:first-child) {
+            margin-block-start: var(--testimonials-row-gutter);
+        }
+        &:first-child,
+        &:nth-child(2),
+        &:nth-child(4) {
+            color: var(--testimonial-secondary);
+        }
+        &:first-child,
+        &:nth-child(4) {
+            img {
+                margin: calc(var(--testimonial-avatar-border) * -1);
+                border: var(--testimonial-avatar-border) solid;
+            }
+        }
+        &:first-child {
+            background: #733fc8 url("images/bg-pattern-quotation.svg") no-repeat var(--testimonial-background-image-side);
+            blockquote {
+                color: #cfcfcf;
+                margin-block-start: 4rem;
+            }
+            img {
+                border-color: #a775f1;
+            }
+        }
+        &:nth-child(2) {
+            background: #48556a;
+        }
+        &:nth-child(4) {
+            background: #19202d;
+            header {
+                color: #ecf2f8;
+            }
+            img {
+                border-color: #733fc8;
+            }
+        }
+    }
+    @include css-media-queries($from-breakpoint: two-column-testimonials) {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: var(--testimonials-row-gutter) var(--testimonials-col-gutter);
+        article {
+            &:not(:first-child) {
+                margin-block-start: initial;
+            }
+            &:first-child {
+                background-position: var(--testimonial-background-image-side-multicolumn);
+                blockquote {
+                    margin-block-start: var(--testimonial-text-margin);
+                }
+            }
+            &:last-child {
+                grid-column: span 2;
+                blockquote {
+                    --testimonial-text-margin: 2.4rem;
+                }
+            }
+        }
+    }
+    @include css-media-queries($from-breakpoint: four-column-testimonials) {
+        grid-template-columns: repeat(4, 1fr);
+        max-width: var(--testimonials-size-inline);
+        article {
+            &:first-child,
+            &:nth-child(4) {
+                grid-column: span 2;
+            }
+            &:nth-child(2) ~ article {
+                blockquote {
+                    --testimonial-text-margin: 2.4rem;
+                }
+            }
+            &:last-child {
+                grid-area: 1 / -2 / span 2;
+            }
+        }
+    }
+}
